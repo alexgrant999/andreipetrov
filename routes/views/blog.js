@@ -59,10 +59,10 @@ exports = module.exports = function (req, res) {
 	view.on('init', function (next) {
 
 		var q = Post.paginate({
-				page: req.query.page || 1,
- 				perPage: 10,
- 				maxPages: 10,
-			})
+			page: req.query.page || 1,
+			perPage: 10,
+			maxPages: 10,
+		})
 			.where('state', 'published')
 			.sort('-publishedDate')
 			.populate('author categories');

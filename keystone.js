@@ -2,8 +2,8 @@ var keystone = require('keystone');
 
 keystone.init({
 
-	'name': 'Keystone Demo',
-	'brand': 'Demo',
+	'name': 'Andrei Petrov',
+	'brand': 'Artist',
 
 	'favicon': 'public/favicon.ico',
 	'less': 'public',
@@ -14,7 +14,7 @@ keystone.init({
 
 	'auto update': true,
 	'mongo': process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/keystone-demo',
-	'cloudinary config': 'cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@keystone-demo',
+	'cloudinary config': process.env.CLOUDINARY_URL || 'cloudinary://477968414131973:rpmzwiGpo1QAdHH338DkGwu4z_0@agweb',
 
 	'session': true,
 	'auth': true,
@@ -45,7 +45,6 @@ keystone.set('locals', {
 keystone.set('routes', require('./routes'));
 
 keystone.set('nav', {
-	'posts': ['posts', 'post-comments', 'post-categories'],
 	'galleries': 'galleries',
 	'enquiries': 'enquiries',
 	'users': 'users',

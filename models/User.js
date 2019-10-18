@@ -21,7 +21,6 @@ User.schema.virtual('canAccessKeystone').get(function () {
 	return true;
 });
 
-User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
 
 User.schema.methods.wasActive = function () {
 	this.lastActiveOn = new Date();
@@ -34,7 +33,7 @@ User.schema.methods.wasActive = function () {
  * and breaking access to the demo
  */
 
-function protect (path) {
+function protect(path) {
 	User.schema.path(path).set(function (value) {
 		return (this.isProtected && this.get(path)) ? this.get(path) : value;
 	});
