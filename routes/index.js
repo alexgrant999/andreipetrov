@@ -45,10 +45,7 @@ exports = module.exports = function (app) {
 
 	// Views
 	app.get('/', routes.views.index);
-	app.get('/blog/:category?', routes.views.blog);
-	app.all('/blog/post/:post', routes.views.post);
 	app.get('/works/:category?', routes.views.work);
-	app.all('/contact', routes.views.contact);
 
 	// Downloads
 	app.get('/download/users', routes.download.users);

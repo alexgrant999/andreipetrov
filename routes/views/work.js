@@ -29,7 +29,7 @@ exports = module.exports = function (req, res) {
 			function findImages(imageCategory, callback) {
 				//console.log('the image category is: ', imageCategory.id)
 				Images.model.find()
-					.where('categories', locals.category.id)
+					.where('categories', imageCategory.id)
 					.exec(function (err, results) {
 						if (err) console.log('the error is ' + err)
 						//console.log('the results of find images ' + results)
