@@ -13,13 +13,14 @@ ArtCategory.model.find()
 		}
 		myCategory = category;
 	});
+
 keystone.pre('routes', function (req, res, next) {
 	res.locals.navLinks = [];
 	myCategory.forEach(element => {
 		res.locals.navLinks.push({ label: element.name, key: element.key, href: '/works/' + element.key },
 		)
 	});
-	//console.log(res.locals.navLinks)
+	console.log('navLinks', res.locals.navLinks)
 
 
 	res.locals.user = req.user;
