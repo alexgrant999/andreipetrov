@@ -17,7 +17,7 @@ exports = module.exports = function (req, res) {
 		async.waterfall([
 			function findCategories(callback) {
 				ArtCategory.model.findOne()
-					.where('key', req.params.category ? req.params.category : 'paintings')
+					.where('key', req.params.category ? req.params.category : 'paintings-2020')
 					.exec(function (err, results) {
 						if (err) console.log('the error is ' + err)
 						//console.log('the results of find categories ' + results)
@@ -27,9 +27,9 @@ exports = module.exports = function (req, res) {
 
 			},
 			function findImages(imageCategory, callback) {
-				//console.log('the image category is: ', imageCategory.id)
+				console.log('the image category is: ', imageCategory.id)
 				Images.model.find()
-					.where('categories', locals.category.id)
+					.where('categories', imageCategory.id)
 					.exec(function (err, results) {
 						if (err) console.log('the error is ' + err)
 						//console.log('the results of find images ' + results)
