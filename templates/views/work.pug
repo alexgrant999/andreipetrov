@@ -5,13 +5,18 @@ block css
 
 	style.
 
-		h3,p{
+		.captionBG {
 		background: rgba(255, 255, 255, 0.50 );
 		color: black;
 		margin: 0;
 		}
 		.carousel-caption {
-			bottom: 10px;
+			bottom: 56px;
+		}
+
+		.carousel-indicators {
+					bottom: 42px;
+
 		}
 
 		.carousel-indicators li {
@@ -38,7 +43,7 @@ block content
 					.container
 						img.img-fluid(src=category._.image.fill(1200,800), alt=category.name + ' image ' + (i+1))
 					.p-3
-						p !{category.content}
+						p #{category.content}
 
 				else
 				// Carousel Wrapper
@@ -52,8 +57,10 @@ block content
 									img.d-block.w-100(src=image._.image.fill(1600,1000), alt=image.name)
 									.mask.rgba-black-light
 								.carousel-caption
-									h3.h3-responsive=image.name
-									p=image.description
+									.p-3.captionBG
+										h3.h3-responsive=image.name
+								
+										| !{image.description}
 
 						// /.Slides
 						// Controls
