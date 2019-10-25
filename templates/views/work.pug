@@ -42,8 +42,8 @@ block content
 				if category.contentPage
 					.container
 						img.img-fluid(src=category._.image.fill(1200,800), alt=category.name + ' image ' + (i+1))
-					.p-3
-						p #{category.content}
+					.p-5
+						| !{category.content}
 
 				else
 				// Carousel Wrapper
