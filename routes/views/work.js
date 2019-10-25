@@ -17,7 +17,7 @@ exports = module.exports = function (req, res) {
 		async.waterfall([
 			function findCategories(callback) {
 				ArtCategory.model.findOne()
-					.where('key', req.params.category)
+					.where('key', req.params.category ? req.params.category : 'paintings')
 					.exec(function (err, results) {
 						if (err) console.log('the error is ' + err)
 						//console.log('the results of find categories ' + results)
