@@ -1,0 +1,77 @@
+extends ../layouts/default
+
+block css
+	link(rel="stylesheet", href="/js/lib/fancybox/jquery.fancybox.css")
+
+	style.
+
+		h3,p{
+		background: rgba(255, 255, 255, 0.50 );
+		color: black;
+		margin: 0;
+		}
+		.carousel-caption {
+			bottom: 10px;
+		}
+
+		.carousel-indicators li {
+			box-sizing: content-box;
+			-ms-flex: 0 1 auto;
+			flex: 0 1 auto;
+			width: 105px;
+			height: 0;
+			margin-right: 3px;
+			margin-left: 3px;
+			text-indent: 0;
+			cursor: pointer;
+			background-color: #fff;
+			background-clip: padding-box;
+			border-top: 10px solid transparent;
+			border-bottom: 10px solid transparent;
+			opacity: 1;
+		}
+				
+				
+block content
+	.page-header
+				if category.contentPage
+					.container
+						img.img-fluid(src=category._.image.fill(1200,800), alt=category.name + ' image ' + (i+1))
+					.p-3
+						p !{category.content}
+
+				else
+				// Carousel Wrapper
+				#carousel-thumb.carousel.slide.carousel-fade.carousel-thumbnails(data-ride='carousel')
+					// Slides
+					.carousel-inner(role='listbox')
+						each image, i in images
+
+							.carousel-item(class=(i==0) ? 'active':'')
+								.view
+									img.d-block.w-100(src=image._.image.fill(1600,1000), alt=image.name)
+									.mask.rgba-black-light
+								.carousel-caption
+									h3.h3-responsive=image.name
+									p=image.description
+
+						// /.Slides
+						// Controls
+					a.carousel-control-prev(href='#carousel-thumb', role='button', data-slide='prev')
+						span.carousel-control-prev-icon(aria-hidden='true')
+						span.sr-only Previous
+					a.carousel-control-next(href='#carousel-thumb', role='button', data-slide='next')
+						span.carousel-control-next-icon(aria-hidden='true')
+						span.sr-only Next
+					// /.Controls
+					ol.carousel-indicators
+						each image, i in images
+							li(class=(i==0) ? 'active':'' data-target='#carousel-thumb', data-slide-to=i)
+								img(src=image._.image.fill(100,60), alt=image.name, width=100)
+					
+block page-js
+	script.
+		$('.carousel').carousel({
+			//interval: 2000,
+			wrap:true
+		})

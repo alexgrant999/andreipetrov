@@ -1,5 +1,5 @@
 var keystone = require('keystone');
-var Image = keystone.list('Image');
+var Images = keystone.list('Images');
 
 
 exports = module.exports = function (req, res) {
@@ -9,7 +9,7 @@ exports = module.exports = function (req, res) {
 
 	locals.section = 'home';
 
-	view.query('images', Image.model.find())
+	view.query('images', Images.model.find())
 		.then(function (err, results, next) {
 			if (err) return next(err);
 			locals.images = results

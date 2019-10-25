@@ -7,13 +7,34 @@ block css
 		margin: 0;
 		}
 
+		.parent{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		}
+		.title {
+			opacity: .9;
+			position: absolute;
+			top: 5%;
+		}
+		.child{
+			opacity: .9;
+			position: absolute;
+			top: 50%;
+		}
+		
+
 
 		.bg {
 			/* The image used */
-			transition: background 1s linear;
+			background-size: cover;
+			background-position: center;
+
+			-webkit-transition: background-image 1s ease-in-out;
+			transition: background-image 1s ease-in-out;
 
 
-			background-image: url('#{images[0]._.image.fill(1300,800)}');
+
 
 			/* Full height */
 			height: 100%;
@@ -26,23 +47,43 @@ block css
 block content
 
 
-	.bg.d-flex.flex-column.align-items-center.justify-content-center
-		a.btn.btn-primary.btn-lg(style='opacity: .9;padding:3rem;',href='/paintings',role='button') Enter Site
+	#image-head.bg.d-flex.flex-column.align-items-center.justify-content-center
+	.parent
+		h1.title Andrei Petrov
+		a.child.btn.btn-primary.btn-lg(href='/paintings',role='button') Enter Site
 
 
 block page-js
+	- theImage = []
+
+	each val, i in images
+		- theImage[i]="'" + val._.image.fill(1600,1000) + "'"
+	
+
+	script. 
+		var slidNum = 0;
+		var BGimages = [!{theImage}]
+
+
+		
+		const node = document.getElementById("image-head");
+
+		const cycleImages = (images, container, step) => {
+			images.forEach((image, index) => (
+			setTimeout(() => {
+				container.style.backgroundImage = `url(${image})`  
+			}, step * (index + 1))
+		))
+		setTimeout(() => cycleImages(images, container, step), step * images.length)
+		}
+
+		cycleImages(BGimages, node, 3000)
+
 	script.
 		function findSize() {
 		var w = window.innerWidth;
 		var h = window.innerHeight;
 		}
-		$img = '#{images[1]._.image.fill(1300,800)}'
-
-		setTimeout(function() {
-					$('.bg').css('background-image', 'url(' + $img + ')');
-
-		},4000)
-		
 
 
 		

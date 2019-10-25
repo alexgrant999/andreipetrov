@@ -1,6 +1,9 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
+
+
+
 var Images = new keystone.List('Images', {
 	autokey: { from: 'name', path: 'key', unique: true },
 	plural: 'Images',
@@ -9,7 +12,7 @@ var Images = new keystone.List('Images', {
 
 Images.add({
 	name: { type: String, required: true },
-	categories: { type: Types.Relationship, ref: 'ArtCategory', many: true },
+	categories: { type: Types.Relationship, ref: 'ArtCategory' },
 	onHomePage: { type: Types.Boolean },
 	description: { type: Types.Html, wysiwyg: true },
 	image: { type: Types.CloudinaryImage },

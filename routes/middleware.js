@@ -1,4 +1,30 @@
 var _ = require('lodash');
+var keystone = require('keystone');
+var ArtCategory = keystone.list('ArtCategory');
+
+
+
+
+exports.initLocals = function (req, res, next) {
+
+	var locals = res.locals;
+
+	ArtCategory.model.find()
+		.sort('sortOrder')
+		.exec(function (err, category) {
+			if (err) {
+				return res.serverError(err, "Error loading current user's owned listings.");
+			}
+			locals.category = category;
+			console.log('all catagories' + category)
+			next();
+		});
+
+	next();
+
+};
+
+
 
 exports.theme = function (req, res, next) {
 	if (req.query.theme) {

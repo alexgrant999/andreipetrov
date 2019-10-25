@@ -4,6 +4,9 @@ keystone.init({
 
 	'name': 'Andrei Petrov',
 	'brand': 'Artist',
+	'port': 3002,
+
+
 
 	'favicon': 'public/favicon.ico',
 	'less': 'public',
