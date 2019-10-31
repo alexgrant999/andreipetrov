@@ -39,54 +39,54 @@ block css
 				
 block content
 	.page-header
-				if category.contentPage
-					.container
-						img.img-fluid(src=category._.image.fill(1200,800), alt=category.name + ' image ' + (i+1))
-					.p-5
-						| !{category.content}
+		if category.contentPage
+			.container
+				img.img-fluid(src=category._.image.fill(1200,800), alt=category.name + ' image ' + (i+1))
+			.p-5
+				| !{category.content}
 
-				else
-				// Carousel Wrapper
-				#carousel-thumb.carousel.slide.carousel-fade.carousel-thumbnails(data-ride='carousel')
-					// Slides
-					.carousel-inner(role='listbox')
-						each image, i in images
+		else
+		// Carousel Wrapper
+		#carousel-thumb.carousel.slide.carousel-fade.carousel-thumbnails(data-ride='carousel')
+			// Slides
+			.carousel-inner(role='listbox')
+				each image, i in images
 
-								.row.thisImage
-									a.imageLink(data-toggle='modal', data-target='#modalAndrei', data-id=i)
-										img.d-block.w-100(src=image._.image.fit(1600,1000), alt=image.name)
-								.row
-									.p-3.captionBG
-										h3.h3-responsive=image.name
-										.h3-responsive 
-											| !{image.description}
+						.row.thisImage
+							a.imageLink(data-toggle='modal', data-target='#modalAndrei', data-id=i)
+								img.d-block.w-100(src=image._.image.fit(1600,1000), alt=image.name)
+						.row
+							.p-3.captionBG
+								h3.h3-responsive=image.name
+								.h3-responsive 
+									| !{image.description}
 
 
 
-	.modal#modalAndrei.fade(tabindex='-1', role='dialog')
-		.modal-dialog.modal-lg(role='document')
-			.modal-content
-				.modal-body
-					button.close(type='button', data-dismiss='modal', aria-label='Close')
-							span(aria-hidden='true') ×
-					img.showMe.d-block.w-100(src=images[2]._.image.fit(1600,1000))
+			.modal#modalAndrei.fade(tabindex='-1', role='dialog')
+				.modal-dialog.modal-lg(role='document')
+					.modal-content
+						.modal-body
+							button.close(type='button', data-dismiss='modal', aria-label='Close')
+									span(aria-hidden='true') ×
+							img.showMe.d-block.w-100
 
 				
-						
-						
-block page-js
-	- theImage = []
+									
+									
+			block page-js
+				- theImage = []
 
-	each val, i in images
-		- theImage[i]="'" + val._.image.fit(1600,1000) + "'"
+				each val, i in images
+					- theImage[i]="'" + val._.image.fit(1600,1000) + "'"
 
-	script. 
-		var BGimages = [!{theImage}]
-		var slidNum
+				script. 
+					var BGimages = [!{theImage}]
+					var slidNum
 
-		$('.imageLink').on("click",function(){
-			slidNum = $(this).data("id");
-			$('.showMe').attr('src',BGimages[slidNum])
-			//post code
-			})
-	
+					$('.imageLink').on("click",function(){
+						slidNum = $(this).data("id");
+						$('.showMe').attr('src',BGimages[slidNum])
+						//post code
+						})
+				
