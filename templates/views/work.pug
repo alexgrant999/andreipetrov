@@ -52,30 +52,17 @@ block content
 					.carousel-inner(role='listbox')
 						each image, i in images
 
-							.carousel-item(class=(i==0) ? 'active':'')
-								.view
+								.row
 									img.d-block.w-100(src=image._.image.fill(1600,1000), alt=image.name)
 									.mask.rgba-black-light
-								.carousel-caption
+								.row
 									.p-3.captionBG
 										h3.h3-responsive=image.name
-								
-										| !{image.description}
+										.h3-responsive 
+											| !{image.description}
 
-						// /.Slides
-						// Controls
-					a.carousel-control-prev(href='#carousel-thumb', role='button', data-slide='prev')
-						span.carousel-control-prev-icon(aria-hidden='true')
-						span.sr-only Previous
-					a.carousel-control-next(href='#carousel-thumb', role='button', data-slide='next')
-						span.carousel-control-next-icon(aria-hidden='true')
-						span.sr-only Next
-					// /.Controls
-					ol.carousel-indicators
-						each image, i in images
-							li(class=(i==0) ? 'active':'' data-target='#carousel-thumb', data-slide-to=i)
-								img(src=image._.image.fill(100,60), alt=image.name, width=100)
-					
+								
+						
 block page-js
 	script.
 		$('.carousel').carousel({

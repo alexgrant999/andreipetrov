@@ -31,7 +31,7 @@ const settings = {
 
 	// The URI of the Mongo DB used
 	// The default ('mongodb://localhost/findyoga') expects the DB to be hosted locally, ie. in dev
-	MONGO_URL: process.env.MONGO_URL || 'mongodb://findyoga:4q6f6hhAzgAGUr9G8UQ8@ds117110-a0.mlab.com:17110,ds117110-a1.mlab.com:17110/findyoga?replicaSet=rs-ds117110',
+	MONGO_URL: process.env.MONGO_URL || 'mongodb://alexgrant:alexgrant1@ds335668.mlab.com:35668/andreidb',
 
 	// If this is not set it will not be used
 	// Eg, usage should be...

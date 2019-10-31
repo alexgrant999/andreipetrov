@@ -23,7 +23,7 @@ keystone.pre('routes', function (req, res, next) {
 	console.log('navLinks', res.locals.navLinks)
 	res.locals.user = req.user;
 	res.locals.theUrl = req.url
-	console.log('the req is ', req.url)
+	//console.log('the req is ', req.url)
 	next();
 });
 
