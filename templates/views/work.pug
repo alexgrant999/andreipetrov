@@ -52,7 +52,8 @@ block content
 	.page-header
 		if category.contentPage
 			.container
-				img.img-fluid(src=category._.image.fill(1200,800), alt=category.name + ' image ' + (i+1))
+				if category.image
+					img.img-fluid(src=category._.image.fill(1200,800), alt=category.name + ' image ' + (i+1))
 			.p-5
 				| !{category.content}
 
