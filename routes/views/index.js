@@ -9,7 +9,7 @@ exports = module.exports = function (req, res) {
 
 	locals.section = 'home';
 
-	view.query('images', Images.model.find())
+	view.query('images', Images.model.find({ onHomePage: true }))
 		.then(function (err, results, next) {
 			if (err) return next(err);
 			locals.images = results
