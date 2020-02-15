@@ -14,7 +14,7 @@ ArtCategory.model.find()
 		myCategory = category;
 	});
 
-keystone.pre('routes', function (req, res, next) {
+keystone.pre('render', function (req, res, next) {
 	res.locals.navLinks = [];
 	myCategory.forEach(element => {
 		res.locals.navLinks.push({ label: element.name, key: element.key, href: '/works/' + element.key },
