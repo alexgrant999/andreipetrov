@@ -4,6 +4,8 @@ block css
 	link(rel="stylesheet", href="/js/lib/fancybox/jquery.fancybox.css")
 
 	style.
+		
+	
 		.scrollDown {
 			    width: 100%;
 				height: 25px;
@@ -46,6 +48,7 @@ block css
 			border-bottom: 10px solid transparent;
 			opacity: 1;
 		}
+		
 				
 				
 block content
@@ -65,16 +68,16 @@ block content
 				.carousel-inner(role='listbox')
 					each image, i in images
 
-							.row.thisImage
+							.row.thisImage.justify-content-center
 								a.imageLink(data-toggle='modal', data-target='#modalAndrei', data-id=i)
 									img.d-block.w-100.img-fluid(src=image._.image.fit(1600,1000), alt=image.name)
 								if i == 0
 									.scrollDown.d-none.d-md-block SCROLL DOWN
 
-							.row.mb-5
+							.row.mb-5.justify-content-center
 								.p-4.captionBG
 									h3.h3-responsive=image.name
-									.h3-responsive 
+									.h3-responsive.text-center
 										| !{image.description}
 
 
