@@ -11,14 +11,13 @@ html
 		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
 		link(href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700', rel='stylesheet')
 		
-			
 		block css
 		block head
 	body
 		if locals.section == 'home'
 			block content
 		else
-			nav.navbar.navbar-expand-sm.navbar-light.bg-light
+			nav.navbar.navbar-expand-sm.navbar-light.bg-light(style='position: fixed;left: 100;top: 0;width: 100%;z-index:1000')
 				a.navbar-brand(href='#') Andrei Petrov
 				button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavDropdown', aria-controls='navbarNavDropdown', aria-expanded='false', aria-label='Toggle navigation')
 					span.navbar-toggler-icon
