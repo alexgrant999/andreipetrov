@@ -1,6 +1,7 @@
 {
   "name": "andrei",
   "version": "1.0.3",
+  "main": "keystone.js",
   "private": true,
   "dependencies": {
     "async": "^2.6.1",
@@ -12,6 +13,10 @@
     "lodash": "^4.17.10",
     "popper": "^1.0.1",
     "pug": "^2.0.3"
+  },
+  "engines": {
+    "node": "12.14.0",
+    "npm": "4.1.x"
   },
   "scripts": {
     "start": "node keystone.js"
