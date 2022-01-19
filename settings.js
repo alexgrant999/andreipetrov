@@ -23,7 +23,7 @@ const settings = {
 
 	// What port should Keystone listen on
 	// In Live Heroku will set this to whatever it needs
-	PORT: process.env.PORT || 3000,
+	PORT: process.env.PORT || 3002,
 
 	// Should be 'production' in both staging and live
 	// We don't use this internally though modules we use might be dependant on it
