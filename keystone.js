@@ -1,14 +1,11 @@
 var keystone = require('keystone');
+const settings = require('./settings');
 
 keystone.init({
 
 	'name': 'Andrei Petrov',
 	'brand': 'Artist',
-<<<<<<< HEAD
 	'port': 3002,
-=======
-	//'port': 3002,
->>>>>>> parent of b3a7721 (added contact form)
 
 
 
@@ -20,7 +17,7 @@ keystone.init({
 	'view engine': 'pug',
 
 	'auto update': true,
-	'mongo': process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/keystone-demo',
+	'mongo': settings.MONGO_URL,
 	'cloudinary config': process.env.CLOUDINARY_URL || 'cloudinary://477968414131973:rpmzwiGpo1QAdHH338DkGwu4z_0@agweb',
 
 	'session': true,

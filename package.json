@@ -2,11 +2,11 @@
   "name": "andrei",
   "version": "1.0.3",
   "private": true,
-
   "dependencies": {
     "async": "^2.6.1",
     "bootstrap": "^4.3.1",
     "csv": "^3.1.0",
+    "dotenv": "^14.2.0",
     "jquery": "^3.4.1",
     "keystone": "^4.0.0",
     "lodash": "^4.17.10",

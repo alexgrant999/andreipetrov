@@ -1,5 +1,6 @@
 // Loading, defaulting and, in some cases, validating the config variables used by the FindYoga app
 // This file is the only place in the app codebase `process.env` should be referenced
+require('dotenv').config();
 
 // First, figure and validate the APP_ENV
 // Should be 'production' in both staging and live
@@ -31,7 +32,7 @@ const settings = {
 
 	// The URI of the Mongo DB used
 	// The default ('mongodb://localhost/findyoga') expects the DB to be hosted locally, ie. in dev
-	MONGO_URL: process.env.MONGO_URL || 'mongodb://alexgrant:alexgrant1@ds335668.mlab.com:35668/andreidb',
+	MONGO_URL: process.env.MONGO_URL,
 
 	// If this is not set it will not be used
 	// Eg, usage should be...
