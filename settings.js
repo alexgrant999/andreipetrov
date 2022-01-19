@@ -32,7 +32,11 @@ const settings = {
 
 	// The URI of the Mongo DB used
 	// The default ('mongodb://localhost/findyoga') expects the DB to be hosted locally, ie. in dev
+<<<<<<< HEAD
 	MONGO_URL: process.env.MONGO_URL,
+=======
+	MONGO_URL: process.env.MONGO_URL || 'mongodb://alexgrant999:*****@findyogalive-shard-00-00.tein0.mongodb.net:27017,findyogalive-shard-00-01.tein0.mongodb.net:27017,findyogalive-shard-00-02.tein0.mongodb.net:27017/findyoga?authSource=admin&replicaSet=atlas-13ou82-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true',
+>>>>>>> parent of 11d202e (uncomit)
 
 	// If this is not set it will not be used
 	// Eg, usage should be...

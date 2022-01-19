@@ -4,6 +4,8 @@ const importRoutes = keystone.importer(__dirname);
 var ArtCategory = keystone.list('ArtCategory');
 
 var myCategory;
+// keystone.pre('routes', middleware.initLocals);
+// keystone.pre('render', middleware.flashMessages);
 
 ArtCategory.model.find()
 	.sort('sortOrder')
@@ -20,7 +22,7 @@ keystone.pre('render', function (req, res, next) {
 		res.locals.navLinks.push({ label: element.name, key: element.key, href: '/works/' + element.key },
 		)
 	});
-	console.log('navLinks', res.locals.navLinks)
+	// console.log('navLinks', res.locals.navLinks)
 	res.locals.user = req.user;
 	res.locals.theUrl = req.url
 	//console.log('the req is ', req.url)
@@ -39,6 +41,8 @@ keystone.set('404', function (req, res, next) {
 var routes = {
 	download: importRoutes('./download'),
 	views: importRoutes('./views'),
+	api: importRoutes('./api')
+
 };
 
 exports = module.exports = function (app) {
@@ -50,9 +54,14 @@ exports = module.exports = function (app) {
 	app.get('/blog/:category?', routes.views.blog);
 	app.all('/blog/post/:post', routes.views.post);
 	app.get('/works/:category?', routes.views.work);
+
 	app.all('/contact', routes.views.contact);
 
 	// Downloads
 	app.get('/download/users', routes.download.users);
+
+
+	app.all('/api/addcontact/create',keystone.middleware.api, routes.api.addcontact.create);
+
 
 }

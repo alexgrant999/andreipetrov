@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"andreidb.postcategories"},{"v":{"$numberInt":"2"},"unique":true,"key":{"key":{"$numberInt":"1"}},"name":"key_1","background":true,"ns":"andreidb.postcategories"}],"uuid":"b0b5a08aa3eb47768eccf905db9bc0ab","collectionName":"postcategories","type":"collection"}

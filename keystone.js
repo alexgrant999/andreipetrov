@@ -5,7 +5,11 @@ keystone.init({
 
 	'name': 'Andrei Petrov',
 	'brand': 'Artist',
+<<<<<<< HEAD
 	'port': settings.PORT,
+=======
+	'port': 3002,
+>>>>>>> parent of 11d202e (uncomit)
 
 
 
@@ -17,7 +21,12 @@ keystone.init({
 	'view engine': 'pug',
 
 	'auto update': true,
+<<<<<<< HEAD
 	'mongo': settings.MONGO_URL,
+=======
+
+	'mongo': process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/andreidb',
+>>>>>>> parent of 11d202e (uncomit)
 	'cloudinary config': process.env.CLOUDINARY_URL || 'cloudinary://477968414131973:rpmzwiGpo1QAdHH338DkGwu4z_0@agweb',
 
 	'session': true,

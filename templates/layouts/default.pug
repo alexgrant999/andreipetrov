@@ -3,33 +3,56 @@ include ../mixins/flash-messages
 doctype html
 html
 	head
-		link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+		link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
+		link(rel='stylesheet' href='/css/site.css' )
 
 		meta(charset="utf-8")
-		meta(name="viewport", content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width")
+		meta(name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width")
 		title=title || 'Andrei Petrov'
-		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
-		link(href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700', rel='stylesheet')
-		
+		link(rel="shortcut icon" href="/favicon.ico" type="image/x-icon")
+		link(href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700' rel='stylesheet')
+
 		block css
 		block head
 	body
 		if locals.section == 'home'
 			block content
 		else
+			#succ.alert.alert-success(role='alert')
+				p#txt
+					strong Success!
+					|  You have been signed up successfully!
+			#fail.alert(role='alert')
+				p#txt
+					strong Sorry!
+					|  You have entered an invalid E-mail.
+			hgroup
+			#slide
+				form#contactForm(name='contactForm' , action='/api/addcontact/create' method='post')
+					.group
+						input(type='name' name='name')
+						label(for='name') Name
+						div.highlight
+						div.bar
+						input(type='email' name='email')
+						label(for='email') Email						
+
+					button#sub.button.buttonBlue(value='submit' type='submit')
+						| Subscribe
+
 			nav.navbar.navbar-expand-sm.navbar-light.bg-light(style='position: fixed;left: 100;top: 0;width: 100%;z-index:1000')
 				a.navbar-brand(href='#') Andrei Petrov
-				button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavDropdown', aria-controls='navbarNavDropdown', aria-expanded='false', aria-label='Toggle navigation')
+				button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
 					span.navbar-toggler-icon
 				#navbarNavDropdown.collapse.navbar-collapse
 					ul.navbar-nav
-						
-						
+
+
 						each link in navLinks
 							li.nav-item
 								a.nav-link(class=(theUrl.match(link.key)) ? 'active' : '', href=link.href)=link.label
 
-					
+
 			.container-fluid.p-0
 				//- intro
 				block intro
@@ -39,10 +62,57 @@ html
 				block content
 				//- footer
 
-		script(src='https://code.jquery.com/jquery-3.4.1.min.js', integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=', crossorigin='anonymous')
-		script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
-		script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
+		script(src='https://code.jquery.com/jquery-3.4.1.min.js' integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin='anonymous')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+		script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+		script. 
+			const  contactForm = document.getElementById('contactForm');
+
+			contactForm.addEventListener("submit", handleFormSubmit);
+
+			function handleFormSubmit(event) 
+			{	
+
+					event.preventDefault();
+					const name = document.getElementsByName('name')[0].value
+					const email = document.getElementsByName('email')[0].value
+
+
+
+					console.log(JSON.stringify(name))
+
+					fetch('/api/addcontact/create', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+					 name:name,
+					 email:email
+					}),
+					})
+					.then((response) => response.json())
+					//Then with the data from the response in JSON...
+					.then((data) => {
+					console.log('Success:', data);
+					alert('thanks');
+						$( "#slide" ).fadeOut('slow')
+
+					})
+					//Then with the error genereted...
+					.catch((error) => {
+					console.error('Error:', error);
+				});
+
+
+
+			
+
+
+
+			}
+
+		
 
 		block page-js
-		
-		
+

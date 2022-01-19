@@ -1,0 +1,1 @@
+{"options":{"viewOn":"listings","pipeline":[{"$match":{"$and":[{"listingState":"published"},{"payment.isEnabled":true}]}},{"$lookup":{"from":"users","localField":"owner","foreignField":"_id","as":"theowner"}}]},"indexes":[],"collectionName":"hello","type":"view"}
