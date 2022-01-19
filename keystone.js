@@ -5,7 +5,7 @@ keystone.init({
 
 	'name': 'Andrei Petrov',
 	'brand': 'Artist',
-	'port': 3002,
+	'port': 3000,
 
 
 
