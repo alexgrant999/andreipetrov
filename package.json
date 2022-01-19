@@ -2,10 +2,7 @@
   "name": "andrei",
   "version": "1.0.3",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alexgrant999/andreipetrov"
-  },
+
   "dependencies": {
     "async": "^2.6.1",
     "bootstrap": "^4.3.1",
