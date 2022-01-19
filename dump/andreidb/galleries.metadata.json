@@ -1,1 +1,0 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"andreidb.galleries"},{"v":{"$numberInt":"2"},"unique":true,"key":{"key":{"$numberInt":"1"}},"name":"key_1","background":true,"ns":"andreidb.galleries"}],"uuid":"8be68ef38be84773ad7a57e703f97520","collectionName":"galleries","type":"collection"}

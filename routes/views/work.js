@@ -35,7 +35,7 @@ exports = module.exports = function (req, res) {
 							if (err) console.log('the error is ' + err)
 							//console.log('the results of find categories ' + results)
 							locals.category = results
-							// console.log('there was not a category and it is ', locals.category)
+							console.log('there was not a category and it is ', locals.category)
 
 							callback(null, results)
 						})
