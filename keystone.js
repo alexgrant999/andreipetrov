@@ -4,7 +4,7 @@ keystone.init({
 
 	'name': 'Andrei Petrov',
 	'brand': 'Artist',
-	//'port': 3002,
+	'port': 3004,
 
 
 
@@ -16,7 +16,8 @@ keystone.init({
 	'view engine': 'pug',
 
 	'auto update': true,
-	'mongo': process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/keystone-demo',
+
+	'mongo': process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/andreidb',
 	'cloudinary config': process.env.CLOUDINARY_URL || 'cloudinary://477968414131973:rpmzwiGpo1QAdHH338DkGwu4z_0@agweb',
 
 	'session': true,

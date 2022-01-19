@@ -16,7 +16,7 @@ exports.initLocals = function (req, res, next) {
 				return res.serverError(err, "Error loading current user's owned listings.");
 			}
 			locals.category = category;
-			console.log('all catagories' + category)
+			// console.log('all catagories' + category)
 			next();
 		});
 
