@@ -1,10 +1,10 @@
 {
-  "name": "keystone-demo",
+  "name": "andrei",
   "version": "1.0.3",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/JedWatson/keystone-demo.git"
+    "url": "https://github.com/alexgrant999/andreipetrov"
   },
   "dependencies": {
     "async": "^2.6.1",
