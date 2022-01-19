@@ -27,7 +27,7 @@ html
 					strong Sorry!
 					|  You have entered an invalid E-mail.
 			hgroup
-			#slide
+			#slide(style='display:none;')
 				form#contactForm(name='contactForm' , action='/api/addcontact/create' method='post')
 					.group
 						input(type='name' name='name')
@@ -66,6 +66,25 @@ html
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
 		script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
 		script. 
+
+
+			function getCookie(name) {
+				var nameEQ = name + "=";
+				var ca = document.cookie.split(';');
+				for(var i=0;i < ca.length;i++) {
+					var c = ca[i];
+					while (c.charAt(0)==' ') c = c.substring(1,c.length);
+					if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+				}
+				return null;
+			}
+
+
+			$(document).ready(function() {
+				if (getCookie('contactAdded') != 'true') {
+				$('#slide').show();
+				}
+			});
 			const  contactForm = document.getElementById('contactForm');
 
 			contactForm.addEventListener("submit", handleFormSubmit);
@@ -96,6 +115,7 @@ html
 					.then((data) => {
 					console.log('Success:', data);
 					alert('thanks');
+						document.cookie = "contactAdded=true";
 						$( "#slide" ).fadeOut('slow')
 
 					})
