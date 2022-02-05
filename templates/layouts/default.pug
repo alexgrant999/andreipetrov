@@ -27,9 +27,12 @@ html
 					strong Sorry!
 					|  You have entered an invalid E-mail.
 			hgroup
-			#slide(style='display:none;')
+			#slide(style='display:none;z-index:10000')
 				form#contactForm(name='contactForm' , action='/api/addcontact/create' method='post')
 					.group
+						#closeDialog(style='float:right;')
+							span close 
+							img(src='/images/close-button.png', style='widht:15px;height:15px')
 						input(type='name' name='name')
 						label(for='name') Name
 						div.highlight
@@ -79,12 +82,14 @@ html
 				return null;
 			}
 
-
 			$(document).ready(function() {
 				if (getCookie('contactAdded') != 'true') {
 				$('#slide').show();
 				}
-			});
+				$('#closeDialog').click(function() {
+					$('#slide').fadeOut('slow')
+				});    
+				});
 			const  contactForm = document.getElementById('contactForm');
 
 			contactForm.addEventListener("submit", handleFormSubmit);
