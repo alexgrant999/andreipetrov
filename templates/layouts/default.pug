@@ -48,11 +48,11 @@ html
 				button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
 					span.navbar-toggler-icon
 				#navbarNavDropdown.collapse.navbar-collapse
-					ul.navbar-nav
+					ul.navbar-nav.flex-wrap.flex-row
 
 
 						each link in navLinks
-							li.nav-item
+							li.nav-item.mr-3
 								a.nav-link(class=(theUrl.match(link.key)) ? 'active' : '', href=link.href)=link.label
 
 
@@ -85,9 +85,13 @@ html
 			$(document).ready(function() {
 				if (getCookie('contactAdded') != 'true') {
 				$('#slide').show();
+
 				}
 				$('#closeDialog').click(function() {
-					$('#slide').fadeOut('slow')
+					$('#slide').fadeOut('slow');
+					document.cookie = "contactAdded=true";
+
+
 				});    
 				});
 			const  contactForm = document.getElementById('contactForm');
